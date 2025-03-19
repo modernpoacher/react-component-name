@@ -68,11 +68,9 @@ export function getElementFromRender (render) {
  *  @param {RenderType} render
  *  @returns {Element}
  */
-export function getContainerElementFromRender (render) {
-  const {
-    container: containerElement
-  } = render
-
+export function getContainerElementFromRender ({
+  container: containerElement
+}) {
   return containerElement
 }
 
@@ -80,11 +78,9 @@ export function getContainerElementFromRender (render) {
  *  @param {Element} containerElement
  *  @returns {Element | null}
  */
-function getElementFromContainerElement (containerElement) {
-  const {
-    firstElementChild: element = null
-  } = containerElement
-
+function getElementFromContainerElement ({
+  firstElementChild: element = null
+}) {
   return element
 }
 
