@@ -1,6 +1,6 @@
 # react-component-name
 
-Get a React component name from its rendered element
+Get a React component name from its `DOM` element
 
 _These examples use **Testing Library** but you can also get the component name from any rendered element with `getComponentNameFromElement` or from its `Fiber` node with `getComponentNameFromFiber`_
 
@@ -19,28 +19,40 @@ function Component () {
   return <div />
 }
 
-expect(getComponentNameFromRender(render(
-  <Component />
-)))
-  .toBe('div')
+describe('`getComponentNameFromRender`', () => {
+  it('gets the component name from `render`' () => {
+    expect(getComponentNameFromRender(render(
+      <Component />
+    )))
+      .toBe('div')
+  })
+})
 
-const {
-  container
-} = render(
-  <Component />
-)
+describe('`getComponentNameFromContainerElement`', () => {
+  it('gets the component name from the component container element' () => {
+    const {
+      container
+    } = render(
+      <Component />
+    )
 
-expect(getComponentNameFromContainerElement(container))
-  .toBe('div')
+    expect(getComponentNameFromContainerElement(container))
+      .toBe('div')
+  })
+})
 
-const {
-  container: {
-    firstElementChild: element
-  }
-} = render(
-  <Component />
-)
+describe('`getComponentNameFromElement`', () => {
+  it('gets the component name from the component element' () => {
+    const {
+      container: {
+        firstElementChild: element
+      }
+    } = render(
+      <Component />
+    )
 
-expect(getComponentNameFromElement(element))
-  .toBe('div')
+    expect(getComponentNameFromElement(element))
+      .toBe('div')
+  })
+})
 ```
