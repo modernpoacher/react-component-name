@@ -16,25 +16,17 @@ import {
   getElementFromRender,
   getComponentNameFromContainerElement,
   getComponentNameFromElement,
+  getFiberFromRender,
+  getComponentNameFromFiber
 } from '#react-component-name'
 
 describe('#react-component-name', () => {
+  function Component () {
+    return <div />
+  }
+
   describe('`getComponentNameFromRender`', () => {
     it('gets the component name from the render', () => {
-      class Component extends React.Component {
-        render () {
-          return (
-            <div className='1'>
-              <div className='2'>
-                <div className='3'>
-                  TEXT
-                </div>
-              </div>
-            </div>
-          )
-        }
-      }
-
       expect(getComponentNameFromRender(render(
         <Component />
       )))
@@ -44,20 +36,6 @@ describe('#react-component-name', () => {
 
   describe('`getComponentNameFromContainerElement`', () => {
     it('gets the component name from the container element', () => {
-      class Component extends React.Component {
-        render () {
-          return (
-            <div className='1'>
-              <div className='2'>
-                <div className='3'>
-                  TEXT
-                </div>
-              </div>
-            </div>
-          )
-        }
-      }
-
       expect(getComponentNameFromContainerElement(getContainerElementFromRender(render(
         <Component />
       ))))
@@ -67,24 +45,26 @@ describe('#react-component-name', () => {
 
   describe('`getComponentNameFromElement`', () => {
     it('gets the component name from the element', () => {
-      class Component extends React.Component {
-        render () {
-          return (
-            <div className='1'>
-              <div className='2'>
-                <div className='3'>
-                  TEXT
-                </div>
-              </div>
-            </div>
-          )
-        }
-      }
-
       expect(getComponentNameFromElement(getElementFromRender(render(
         <Component />
       ))))
         .toBe('div')
+    })
+  })
+
+  describe('`getComponentNameFromFiber`', () => {
+    it('gets the component name from the element', () => {
+      /**
+       *  `getFiberFromRender` can return either a `Fiber` node or `null`
+       */
+      const fiberNode = getFiberFromRender(render(
+        <Component />
+      ))
+
+      if (fiberNode) {
+        expect(getComponentNameFromFiber(fiberNode))
+          .toBe('div')
+      }
     })
   })
 })

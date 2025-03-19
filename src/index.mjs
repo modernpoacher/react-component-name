@@ -1,9 +1,8 @@
 // @ts-nocheck
 
 /**
+ *  @typedef {import('@testing-library/react').RenderResult} RenderType
  *  @typedef {ReactComponentNameTypes.FiberNode} FiberNode
- *  @typedef {ReactComponentNameTypes.FiberRootNode} FiberRootNode
-  *  @typedef {import('@testing-library/react').RenderResult} RenderResult
  */
 
 import debug from 'debug'
@@ -54,51 +53,39 @@ import {
 const log = debug('react-component-name')
 
 /**
- *  @param {RenderResult} render
+ *  @param {RenderType} render
  *  @returns {Element | null}
  */
 export function getElementFromRender (render) {
-  if (render) {
-    return (
-      getElementFromContainerElement(
-        getContainerElementFromRender(render)
-      )
+  return (
+    getElementFromContainerElement(
+      getContainerElementFromRender(render)
     )
-  }
-
-  return null
+  )
 }
 
 /**
- *  @param {RenderResult} render
- *  @returns {Element | null}
+ *  @param {RenderType} render
+ *  @returns {Element}
  */
 export function getContainerElementFromRender (render) {
-  if (render) {
-    const {
-      container: element = null
-    } = render
+  const {
+    container: containerElement
+  } = render
 
-    return element
-  }
-
-  return null
+  return containerElement
 }
 
 /**
- *  @param {Element | null} container
+ *  @param {Element} containerElement
  *  @returns {Element | null}
  */
-function getElementFromContainerElement (container) {
-  if (container) {
-    const {
-      firstElementChild: element = null
-    } = container
+function getElementFromContainerElement (containerElement) {
+  const {
+    firstElementChild: element = null
+  } = containerElement
 
-    return element
-  }
-
-  return null
+  return element
 }
 
 /**
@@ -140,15 +127,15 @@ export function getReactContainerFiberKey (containerElement) {
 }
 
 /**
- *  @param {RenderResult} render
- *  @returns {Element | null}
+ *  @param {RenderType} render
+ *  @returns {FiberNode | null}
  */
 export function getFiberFromRender (render) {
-  if (render) {
+  const element = getElementFromRender(render)
+
+  if (element) {
     return (
-      getFiberFromElement(
-        getElementFromRender(render)
-      )
+      getFiberFromElement(element)
     )
   }
 
@@ -157,14 +144,14 @@ export function getFiberFromRender (render) {
 
 /**
  *  @param {Element} element
- *  @returns {FiberNode | null | undefined}
+ *  @returns {FiberNode | null}
  */
 export function getFiberFromElement (element) {
   const key = getReactFiberKey(element)
 
   if (key) {
     const { // @ts-expect-error
-      [key]: fiber
+      [key]: fiber = null
     } = element
 
     return fiber
@@ -175,14 +162,14 @@ export function getFiberFromElement (element) {
 
 /**
  *  @param {Element} containerElement
- *  @returns {FiberNode | null | undefined}
+ *  @returns {FiberNode | null}
  */
 export function getContainerFiberFromContainerElement (containerElement) {
   const key = getReactContainerFiberKey(containerElement)
 
   if (key) {
     const { // @ts-expect-error
-      [key]: fiber
+      [key]: fiber = null
     } = containerElement
 
     return fiber
@@ -381,7 +368,7 @@ export function getComponentNameFromFiber (fiberNode) {
 }
 
 /**
- *  @param {RenderResult | null} render
+ *  @param {RenderType | null} render
  *  @returns {string | null}
  */
 export function getComponentNameFromRender (render) {
