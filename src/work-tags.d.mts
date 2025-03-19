@@ -1,0 +1,32 @@
+type WorkTag = ReactComponentNameTypes.WorkTag
+
+export declare const FUNCTION_COMPONENT: WorkTag
+export declare const CLASS_COMPONENT: WorkTag
+export declare const HOST_ROOT: WorkTag
+export declare const HOST_PORTAL: WorkTag
+export declare const HOST_COMPONENT: WorkTag
+export declare const HOST_TEXT: WorkTag
+export declare const FRAGMENT: WorkTag
+export declare const MODE: WorkTag
+export declare const CONTEXT_CONSUMER: WorkTag
+export declare const CONTEXT_PROVIDER: WorkTag
+export declare const FORWARD_REF: WorkTag
+export declare const PROFILER: WorkTag
+export declare const SUSPENSE_COMPONENT: WorkTag
+export declare const MEMO_COMPONENT: WorkTag
+export declare const SIMPLE_MEMO_COMPONENT: WorkTag
+export declare const LAZY_COMPONENT: WorkTag
+export declare const INCOMPLETE_CLASS_COMPONENT: WorkTag
+export declare const DEYDRATED_FRAGMENT: WorkTag
+export declare const SUSPENSE_LIST_COMPONENT: WorkTag
+export declare const SCOPE_COMPONENT: WorkTag
+export declare const OFFSCREEN_COMPONENT: WorkTag
+export declare const LEGACY_HIDDEN_COMPONENT: WorkTag
+export declare const CACHE_COMPONENT: WorkTag
+export declare const TRACING_MARKER_COMPONENT: WorkTag
+export declare const HOST_HOISTABLE: WorkTag
+export declare const HOST_SINGLETON: WorkTag
+export declare const INCOMPLETE_FUNCTION_COMPONENT: WorkTag
+export declare const THROW: WorkTag
+export declare const VIEW_TRANSITION_COMPONENT: WorkTag
+export declare const ACTIVITY_COMPONENT: WorkTag
