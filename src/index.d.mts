@@ -12,15 +12,15 @@ declare function getElementFromContainerElement (containerElement: Element): Ele
 
 export function isReactFiberKey (key: PropertyKey): boolean
 
-export function isReactContainerFiberKey (key: PropertyKey) : boolean
+export function isReactContainerFiberKey (key: PropertyKey): boolean
 
 export function getReactFiberKey (element: Element): string | undefined
 
-export function getReactContainerFiberKey (containerElement: Element) : string | undefined
+export function getReactContainerFiberKey (containerElement: Element): string | undefined
 
 export function getFiberFromRender (render: RenderType): FiberNode | null
 
-export function getFiberFromElement (element: Element) : FiberNode | null
+export function getFiberFromElement (element: Element): FiberNode | null
 
 export function getContainerFiberFromContainerElement (containerElement: Element): FiberNode | null
 
