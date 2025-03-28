@@ -53,7 +53,7 @@
     "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "react": "^19.0.0"
+    "react": "^19.1.0"
   },
   "imports": {
     "#react-component-name": "./src/index.mjs"
