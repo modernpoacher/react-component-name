@@ -30,7 +30,7 @@
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
-    "debug": "^4.4.0"
+    "debug": "^4.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",
