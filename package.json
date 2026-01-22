@@ -46,7 +46,7 @@
     "@types/react": "^19.2.9",
     "@types/testing-library__react": "^10.2.0",
     "@typescript-eslint/parser": "^8.53.1",
-    "core-js": "^3.47.0",
+    "core-js": "^3.48.0",
     "eslint": "9.38.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^17.0.0",
