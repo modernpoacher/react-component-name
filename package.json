@@ -1,6 +1,6 @@
 {
   "name": "react-component-name",
-  "version": "0.0.169",
+  "version": "0.0.170",
   "description": "Get a React component name from Fiber",
   "keywords": [
     "react",
